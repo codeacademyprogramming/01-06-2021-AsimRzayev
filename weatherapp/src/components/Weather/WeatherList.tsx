@@ -5,7 +5,7 @@ interface IProps{
     tempType:string,
     deleteItem:any
 }
-export default function WeatherList({cities,tempType,deleteItem}):IProps {
+export default function WeatherList:React.FC<IProps>({cities,tempType,deleteItem}) {
     return (
         <ul
             data-testid="itemlist"

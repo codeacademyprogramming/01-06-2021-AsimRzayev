@@ -4,7 +4,7 @@ const api = {
     key: "c36c403bb67eb86c13bff234dcc06ae6",
     base: "https://api.openweathermap.org/data/2.5/",
 };
-export default function Weather(): {
+export default function Weather(){
     let [query, setQuery] = useState("");
     let [cities, setcity] = useState([]);
     const [tempType, setTempType] = useState("K");
