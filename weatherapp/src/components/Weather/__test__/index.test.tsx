@@ -1,10 +1,10 @@
 import React from 'react';
-import Weather from '../../Weather'
-import WeatherList from '../../Weather/WeatherList'
+import Weather from '../../Weather/'
+import WeatherList from '../WeatherList'
 import WeatherListItem from '../../Weather/WeatherListItem'
 import {render,fireEvent} from '@testing-library/react';
 test('should test dummy function', () => {
-   const {getByText,getByLabelText}=render(<Weather/>)
+   expect {getByText,getByLabelText}=render(<Weather/>)
    expect(getByText('Weather list')).not.toBeUndefined();
    expect(getByText("Add")).not.toBeUndefined();
    expect(getByText("Clear All")).not.toBeUndefined();

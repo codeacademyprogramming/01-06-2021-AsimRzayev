@@ -1,13 +1,19 @@
 import React, { useState, useCallback, FormEvent } from "react";
 import WeatherList from './WeatherList'
+import { ICityWeather } from './models'
 const api = {
     key: "c36c403bb67eb86c13bff234dcc06ae6",
     base: "https://api.openweathermap.org/data/2.5/",
 };
-export default function Weather(){
+interface IProps{
+    weather:ICityWeather
+}
+
+export default function Weather:React.FC<IProps["weather"]> = ({name})=>{
     let [query, setQuery] = useState("");
     let [cities, setcity] = useState([]);
     const [tempType, setTempType] = useState("K");
+  
     const addCity = (evt:FormEvent) => {
         if (query !== "") {
             fetch(
@@ -16,13 +22,14 @@ export default function Weather(){
                 .then((res) => res.json())
                 .then((result) => {
 
-                    setcity([
+                    setcity:
+                        ([
                         ...cities,
                         {
-                            name: (result.name).toString(),
-                            temp: Number(result.main.temp),
+                            name: result.name,
+                            temp: result.main.temp,
                         },
-                    ]);
+                    ])
                 });
         }
     };

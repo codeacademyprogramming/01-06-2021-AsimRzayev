@@ -1,11 +1,13 @@
-import React from 'react'
-import WeatherListItem from './WeatherListItem'
+import React from 'react';
+import WeatherListItem from './WeatherListItem';
+
 interface IProps{
-    citeis:string[],
-    tempType:string,
-    deleteItem:any
+    cities:[];
+    tempType:string;
+    deleteItem:()=>void;
 }
-export default function WeatherList:React.FC<IProps>({cities,tempType,deleteItem}) {
+
+export const WeatherList:React.FC<IProps>=({cities,tempType,deleteItem})=> {
     return (
         <ul
             data-testid="itemlist"
