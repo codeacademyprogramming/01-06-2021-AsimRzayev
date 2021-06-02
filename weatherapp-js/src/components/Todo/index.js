@@ -1,14 +1,14 @@
-import React, { useState, useCallback, FormEvent } from "react";
+import React, { useState, useCallback } from "react";
 import WeatherList from './WeatherList'
 const api = {
     key: "c36c403bb67eb86c13bff234dcc06ae6",
     base: "https://api.openweathermap.org/data/2.5/",
 };
-export default function Weather(): {
+export default function Weather() {
     const [query, setQuery] = useState("");
     let [cities, setcity] = useState([]);
     const [tempType, setTempType] = useState("K");
-    const addCity = (evt:FormEvent) => {
+    const addCity = (evt) => {
         if (query !== "") {
             fetch(
                 `http://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${api.key}`
@@ -19,8 +19,8 @@ export default function Weather(): {
                     setcity([
                         ...cities,
                         {
-                            name: (result.name).toString(),
-                            temp: Number(result.main.temp),
+                            name: result.name,
+                            temp: result.main.temp,
                         },
                     ]);
                 });
@@ -33,7 +33,7 @@ export default function Weather(): {
         },
         [cities]
     );
-    const handleForm = (evt:FormEvent) => {
+    const handleForm = (evt) => {
         evt.preventDefault();
     };
     return (
